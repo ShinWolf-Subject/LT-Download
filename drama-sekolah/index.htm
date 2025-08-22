@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drama Sekolah - @Umai & @LST</title>
+</head>
+<body>
+<script>
+  const url = "https://shinwolf-subject.github.io/DetectY-Lie/main-dtct/drama-sklh/sumber_teks.rar";
+
+  const urlParts = url.split("/");
+  const originalName = urlParts[urlParts.length - 1]; // source.rar
+
+  const dotIndex = originalName.lastIndexOf(".");
+  const nameOnly = originalName.substring(0, dotIndex); // source
+  const ext = originalName.substring(dotIndex + 1); // rar
+
+  const now = new Date();
+  const options = { day: "2-digit", month: "short", year: "numeric" };
+  const dateStr = now.toLocaleDateString("en-GB", options).replace(/ /g, "-").toLowerCase();
+
+  const randomCode = Math.random().toString(36).substring(2, 15);
+
+  const finalName = `LST-${nameOnly}_${dateStr}_${randomCode}.${ext}`;
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = finalName;
+  document.body.appendChild(a);
+
+  a.click();
+
+  document.body.removeChild(a);
+</script>
+</body>
+</html>
